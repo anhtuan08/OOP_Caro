@@ -14,12 +14,8 @@ void Game::gameLoad()
 
 	char key = _getch();
 	
-	//switch (key) {
-	//	case '1':
-	//		gameStart();
-	//		break;
-	//}
 }
+
 
 
 void Game::gameStart(Matrix drawMatrix, Square oVuong)
