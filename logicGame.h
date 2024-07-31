@@ -11,7 +11,6 @@ public:
 
 	void checkVertical();
 
-	~LogicGame();
 
 private:
 	int Horizontal;

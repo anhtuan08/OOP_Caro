@@ -68,8 +68,6 @@ void Game::gameStart(Matrix drawMatrix, Square oVuong)
 			}
 			std::cout << endl;
 
-			//drawMatrix.printValueBoard(rows, cols);
-
 	}
 void Game::gameCheckWinner(Matrix matrix) {
 	int countCols = 0;
@@ -86,7 +84,6 @@ void Game::gameCheckWinner(Matrix matrix) {
 			int start_cols = i;
 			while (countCols < numberWins) {
 				array[countCols] = matrix.getValueSquare(j, start_cols);
-				//matrix.getValueSquare(rows, start_cols);
 				start_cols++;
 				countCols++;
 			}
@@ -102,21 +99,6 @@ void Game::gameCheckWinner(Matrix matrix) {
 			cout << "tie";
 		}
 	}
-
-	////void checkVertical 
-	//for (int j = 0; j < cols; j++) {
-	//	for (int i = 0; i < rows - numberWins + 1; i++) {
-	//		int start_rows = i;
-	//		while (countCols < numberWins) {
-	//			g1.getValueSquare(start_rows, cols);
-	//			start_rows++;
-	//			countCols++;
-	//		}
-	//		countCols = 0;
-	//	}
-	//}
-
-
 
 }
 

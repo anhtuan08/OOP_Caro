@@ -6,7 +6,6 @@
 int main()
 {
     Game caro;
-    //caro.gameLoad();
     
     Matrix a(3, 3);
 
@@ -15,6 +14,7 @@ int main()
     caro.gameStart(a, oVuong);
 
     caro.gameCheckWinner(a);
+
 
 }
 
