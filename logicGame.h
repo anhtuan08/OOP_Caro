@@ -11,7 +11,7 @@ public:
 
 	void checkVertical();
 
-
+	void checkwin*()
 private:
 	int Horizontal;
 	int Vertical;
