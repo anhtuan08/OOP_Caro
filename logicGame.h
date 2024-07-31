@@ -1,18 +1,35 @@
 #pragma once
 #include <iostream>
+#include <stdbool.h>
 #include  "map.h"
+
+const int numberWins = 3;
 
 class LogicGame : public Matrix
 {
 public:
 	LogicGame();
 	
-	void checkHorizontal();
+	bool checkHorizontal(Matrix board, int rows, int cols, string array[numberWins]);
 
-	void checkVertical();
+	bool checkVertical(Matrix board, int rows, int cols, string array[numberWins]);
 
-	void checkwin*()
+	bool checkDiagonalLeft(Matrix board, int rows, int cols, string array[numberWins]);
+
+	bool checkDiagonalLeftBottom(Matrix board, int rows, int cols, string array[numberWins]);
+
+	bool checkDiagonalRight(Matrix board, int rows, int cols, string array[numberWins]);
+
+	bool checkDiagonalRightBottom(Matrix board, int rows, int cols, string array[numberWins]);
+
+
 private:
-	int Horizontal;
-	int Vertical;
+	bool Horizontal;
+	bool Vertical;
+	bool DiagonalLeft;
+	bool DiagonalRight;
+
+	bool DiagonalLeftBottom;
+	bool DiagonalRightBottom;
+
 };

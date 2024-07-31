@@ -78,27 +78,7 @@ void Game::gameCheckWinner(Matrix matrix) {
 
 	string array[numberWins];
 
-	//void checkHorizontal
-	for (int j = 0; j < rows; j++) {
-		for (int i = 0; i < cols - numberWins + 1; i++) {
-			int start_cols = i;
-			while (countCols < numberWins) {
-				array[countCols] = matrix.getValueSquare(j, start_cols);
-				start_cols++;
-				countCols++;
-			}
-			countCols = 0;
-		}
-		if (array[0] == "X" && array[0] == array[1] && array[1] == array[2]) {
-			cout << "X wins" << endl;
-		}
-		else if(array[0] == "O" && array[0] == array[1] && array[1] == array[2]) {
-			cout << "O wins" << endl;
-		}
-		else {
-			cout << "tie";
-		}
-	}
+	
 
 }
 

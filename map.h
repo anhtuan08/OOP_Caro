@@ -43,7 +43,6 @@ public:
 private:
 	int rows;
 	int cols;
-	//vector<vector<Square>> squares;
 	Square** squares;
 };
 			
