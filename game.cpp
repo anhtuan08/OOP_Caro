@@ -17,68 +17,55 @@ void Game::gameLoad()
 }
 
 
+bool Game::gameWon(Matrix board, LogicGame game) {
+	int rows = board.getRows();
+	int cols = board.getCols();
+	
 
-void Game::gameStart(Matrix drawMatrix, Square oVuong)
+	if (
+		game.checkDiagonalLeft(board, rows, cols)
+		//|| game.checkDiagonalLeftBottom(board, rows, cols)
+		//|| game.checkDiagonalRight(board, rows, cols)
+		//|| game.checkDiagonalRightBottom(board, rows, cols)
+		||game.checkHorizontal(board, rows, cols)
+		|| game.checkVertical(board, rows, cols)
+		 ) 
+	{
+		return true;
+	}
+	return false;
+}
+
+void Game::gameStart(Matrix board, Square oVuong)
 {
 	system("cls");
 
-	int rows = drawMatrix.getRows();
-	int cols = drawMatrix.getCols();
+	int rows = board.getRows();
+	int cols = board.getCols();
 
-	drawMatrix.setValueBoard(rows, cols);
+	board.setValueBoard(rows, cols);
 
 	int x = 0, y = 0;
 	int posX = 0, posY = 0;
+	int turn = 0;
+	string playerCurrent = "x";
 
-	int countChessX = 0,  countChessO = 0;
-
-
-			while (countChessX + countChessO < (rows * cols)) {
-				drawMatrix.moveCursor(x,y);
-				char key = _getch();
-
-				switch (key) {
-						case 'w': 
-							posY = drawMatrix.checkBoundaryRowsTop(key, posY, drawMatrix);
-							y = 2 * posY;
-				   			break;
-				   		case 's':
-							posY = drawMatrix.checkBoundaryRowsBottom(key, posY, drawMatrix);
-							y = posY * 2;
-				   			break;
-				   		case 'a':
-							posX = drawMatrix.checkBoundaryColsLeft(key, posX, drawMatrix);
-							x = 2 * posX;
-				   			break;
-				   		case 'd':
-							posX = drawMatrix.checkBoundaryColsRight(key, posX, drawMatrix);
-							x = posX * 2;
-				   			break;
-				   		case 'x':
-				   			std::cout << "X";
-				   			countChessX++;
-							drawMatrix.setValueSquare(posX, posY, "X");
-				   			break;
-				   		case 'o':
-				   			std::cout<< "O";
-				   			countChessO++;
-							drawMatrix.setValueSquare(posX, posY, "O");
-				   			break;
-				   	}
+	Game game1;
+	LogicGame logicGame1;
+	while (game1.gameWon(board, logicGame1) != true) {
+		if (turn < (rows * cols)) {
+			logicGame1.logicControl(board, x, y, posX, posY, playerCurrent);
+			logicGame1.logicTurn(board, posX, posY, playerCurrent);
+			if (game1.gameWon(board, logicGame1) != true) {
+				logicGame1.switchPlayer(playerCurrent);
 			}
-			std::cout << endl;
-
+			else {
+				cout << "\t\t\t\t\t" << playerCurrent + "wins";
+			}
+		}
 	}
-void Game::gameCheckWinner(Matrix matrix) {
-	int countCols = 0;
 
-	int rows, cols;
-	rows = matrix.getRows();
-	cols = matrix.getCols();
-
-	string array[numberWins];
-
-	
 
 }
+
 

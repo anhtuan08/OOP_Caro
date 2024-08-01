@@ -7,13 +7,11 @@ int main()
 {
     Game caro;
     
-    Matrix a(3, 3);
+    Matrix a(10, 10);
 
     Square oVuong;
 
     caro.gameStart(a, oVuong);
-
-    caro.gameCheckWinner(a);
  
 
 }
