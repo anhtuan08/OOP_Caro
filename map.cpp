@@ -59,16 +59,6 @@ void Matrix::setValueBoard(int rows, int cols) {
 	}
 }
 
-	void Matrix::printValueBoard(int rows, int cols) {
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				
-				cout << squares[i][j].getValue() << " ";
-			}
-		cout << endl;
-		}
-	}
-
 	void Matrix::setValueSquare(int x, int y, string value) {
 		squares[x][y].setValue(x, y, value);	
 	}

@@ -7,11 +7,9 @@ int main()
 {
     Game caro;
     
-    Matrix a(10, 10);
+    Matrix a(19,19);
 
-    Square oVuong;
-
-    caro.gameStart(a, oVuong);
+    caro.gameStart(a);
  
 
 }

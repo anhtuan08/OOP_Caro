@@ -19,8 +19,6 @@ public:
 
 	void setValueBoard(int rows, int cols);
 
-	void printValueBoard(int rows, int cols);
-
 	void moveCursor(int x, int y);
 
 	void setValueSquare(int x, int y, string value);

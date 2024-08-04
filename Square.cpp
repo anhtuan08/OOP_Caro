@@ -1,9 +1,5 @@
 #include "Square.h"
 
-void Square::setX(int x)
-{
-	this->x = x;
-}
 
 int Square::getX()
 {

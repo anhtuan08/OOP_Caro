@@ -2,6 +2,7 @@
 #include "map.h"
 #include "Square.h"
 #include "logicGame.h"
+#include "Graphics.h"
 
 void Game::gameLoad()
 {
@@ -24,9 +25,9 @@ bool Game::gameWon(Matrix board, LogicGame game) {
 
 	if (
 		game.checkDiagonalLeft(board, rows, cols)
-		//|| game.checkDiagonalLeftBottom(board, rows, cols)
-		//|| game.checkDiagonalRight(board, rows, cols)
-		//|| game.checkDiagonalRightBottom(board, rows, cols)
+		|| game.checkDiagonalLeftBottom(board, rows, cols)
+		|| game.checkDiagonalRight(board, rows, cols)
+		|| game.checkDiagonalRightBottom(board, rows, cols)
 		||game.checkHorizontal(board, rows, cols)
 		|| game.checkVertical(board, rows, cols)
 		 ) 
@@ -36,15 +37,32 @@ bool Game::gameWon(Matrix board, LogicGame game) {
 	return false;
 }
 
-void Game::gameStart(Matrix board, Square oVuong)
+void Game::gameStart(Matrix board)
 {
 	system("cls");
 
 	int rows = board.getRows();
 	int cols = board.getCols();
-
 	board.setValueBoard(rows, cols);
 
+	Graphics drawBoard;
+	for (int i = 0; i < rows * 2; i++) {
+		for (int j = 0; j < cols * 2; j++) {
+			if (j % 2 == 0)
+			{
+				drawBoard.gotoXY((j + 1), i);
+				cout << "-";
+			}
+			if (i % 2 == 1 && (j % 2 == 0)) 
+			{
+				drawBoard.gotoXY((j + 1), (i - 1));
+				cout << "| ";
+			}
+		}
+	}
+
+
+	Square oVuong;
 	int x = 0, y = 0;
 	int posX = 0, posY = 0;
 	int turn = 0;

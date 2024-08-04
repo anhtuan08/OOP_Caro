@@ -10,7 +10,7 @@ public:
 
 	void gameLoad();
 
-	void gameStart(Matrix matrix, Square oVuong);
+	void gameStart(Matrix matrix);
 
 	bool gameWon(Matrix board, LogicGame g1);
 

@@ -9,7 +9,6 @@ class Square
 {
 public:
 	void setValue(int x, int y, string value);
-	void setX(int X);
 
 	int getX();
 	int getY();

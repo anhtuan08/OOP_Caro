@@ -108,12 +108,15 @@ bool LogicGame::checkDiagonalLeftBottom(Matrix board, int rows, int cols) {
 bool LogicGame::checkDiagonalRight(Matrix board, int rows, int cols) {
 	int countDiagonals = 0;
 	int RightToLeft = 0;
+	int x, y;
 	string array[numberWins];
 	while (RightToLeft < (cols - numberWins + 1)) {
 		for (int i = 0; i < (rows - numberWins + 1); i++) {
 			int start_diagonals = i;
 			while (countDiagonals < numberWins) {
-				array[countDiagonals] = board.getValueSquare(start_diagonals, rows - 1 - start_diagonals - RightToLeft);
+				x = start_diagonals;
+				y = cols - 1 - start_diagonals - RightToLeft;
+				array[countDiagonals] = board.getValueSquare(x, y);
 				countDiagonals++;
 				start_diagonals++;
 			}
@@ -132,11 +135,11 @@ bool LogicGame::checkDiagonalRightBottom(Matrix board, int rows, int cols) {
 	int countDiagonals = 0;
 	int RightToLeft = 0;
 	string array[numberWins];
-	while (RightToLeft < (rows - numberWins + 1)) {
+	while (RightToLeft < (cols - numberWins)) {
 		for (int i = 0; i < (rows - numberWins); i++) {
 			int start_diagonals = i;
 			while (countDiagonals < numberWins) {
-				array[countDiagonals] = board.getValueSquare(start_diagonals + 1 + RightToLeft, rows - 1 - start_diagonals);
+				array[countDiagonals] = board.getValueSquare(start_diagonals + 1 + RightToLeft, cols - 1 - start_diagonals);
 				countDiagonals++;
 				start_diagonals++;
 			}
@@ -144,7 +147,7 @@ bool LogicGame::checkDiagonalRightBottom(Matrix board, int rows, int cols) {
 			if (checkArray(array))
 				return true;
 		}
-		cols--;
+		rows--;
 		RightToLeft++;
 	}
 
