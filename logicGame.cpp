@@ -4,21 +4,24 @@ LogicGame::LogicGame() {
 	
 }
 
-bool checkArray(string array[numberWins]) {
+int checkArray(string array[numberWins]) {
+	int score = 0;
 	if (array[0] == "x"){
-		if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
-			return true;
+		//if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
+			if(array[0] == array[1] && array[1] == array[2]){
+			return score + 10;
 		}
 	}
 	else if(array[0] == "o") {
-		if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
-			return true;
+		//if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
+		if (array[0] == array[1] && array[1] == array[2]) {
+		return score - 10;
 		}
 	}
-	return false;
+	return 0;
 }
 
-bool LogicGame::checkHorizontal(Matrix board, int rows, int cols) {
+int LogicGame::checkHorizontal(Matrix board, int rows, int cols) {
 	int countCols = 0;
 	string array[numberWins];
 	for (int j = 0; j < rows; j++) {
@@ -30,15 +33,19 @@ bool LogicGame::checkHorizontal(Matrix board, int rows, int cols) {
 				countCols++;
 			}
 			countCols = 0;
-			if (checkArray(array))
-				return true;
+			int wins = checkArray(array);
+			if (wins == 10) {
+				return 10;
+			}
+			else if (wins == -10){
+				return -10;
+			}
 		}
-
 	}
-	return false;
+	return 1;
 }
 
-bool LogicGame::checkVertical(Matrix board, int rows, int cols) {
+int LogicGame::checkVertical(Matrix board, int rows, int cols) {
 	int countRows = 0;
 	string array[numberWins];
 	for (int j = 0; j < cols; j++) {
@@ -50,15 +57,19 @@ bool LogicGame::checkVertical(Matrix board, int rows, int cols) {
 				countRows++;
 			}
 			countRows = 0;
-				if (checkArray(array))
-			return true;
+			int wins = checkArray(array);
+			if (wins == 10) {
+				return 10;
+			}
+			else if (wins == -10) {
+				return -10;
+			}
 		}
-
 	}
-	return false;
+	return 1;
 }
 
-bool LogicGame::checkDiagonalLeft(Matrix board, int rows, int cols) {
+int LogicGame::checkDiagonalLeft(Matrix board, int rows, int cols) {
 	int countDiagonals = 0;
 	int leftToRight = 0;
 	string array[numberWins];
@@ -71,17 +82,22 @@ bool LogicGame::checkDiagonalLeft(Matrix board, int rows, int cols) {
 				start_diagonals++;
 			}
 			countDiagonals = 0;
-			if (checkArray(array))
-				return true;
+			int wins = checkArray(array);
+			if (wins == 10) {
+				return 10;
+			}
+			else if (wins == -10) {
+				return -10;
+			}
 		}
 		rows--;
 		leftToRight++;
 	}
 
-	return false;
+	return 1;
 }
 
-bool LogicGame::checkDiagonalLeftBottom(Matrix board, int rows, int cols) {
+int LogicGame::checkDiagonalLeftBottom(Matrix board, int rows, int cols) {
 	int countDiagonals = 0;
 	int leftToRight = 0;
 	string array[numberWins];
@@ -94,18 +110,23 @@ bool LogicGame::checkDiagonalLeftBottom(Matrix board, int rows, int cols) {
 				start_diagonals++;
 			}
 			countDiagonals = 0;
-			if (checkArray(array))
-				return true;
+			int wins = checkArray(array);
+			if (wins == 10) {
+				return 10;
+			}
+			else if (wins == -10) {
+				return -10;
+			}
 		}
 		cols--;
 		leftToRight++;
 	}
 
-	return false;
+	return 1;
 }
 
 
-bool LogicGame::checkDiagonalRight(Matrix board, int rows, int cols) {
+int LogicGame::checkDiagonalRight(Matrix board, int rows, int cols) {
 	int countDiagonals = 0;
 	int RightToLeft = 0;
 	int x, y;
@@ -121,17 +142,22 @@ bool LogicGame::checkDiagonalRight(Matrix board, int rows, int cols) {
 				start_diagonals++;
 			}
 			countDiagonals = 0;
-			if (checkArray(array))
-				return true;
+			int wins = checkArray(array);
+			if (wins == 10) {
+				return 10;
+			}
+			else if (wins == -10) {
+				return -10;
+			}
 		}
 		rows--;
 		RightToLeft++;
 	}
 
-	return false;
+	return 1;
 }
 
-bool LogicGame::checkDiagonalRightBottom(Matrix board, int rows, int cols) {
+int LogicGame::checkDiagonalRightBottom(Matrix board, int rows, int cols) {
 	int countDiagonals = 0;
 	int RightToLeft = 0;
 	string array[numberWins];
@@ -144,18 +170,24 @@ bool LogicGame::checkDiagonalRightBottom(Matrix board, int rows, int cols) {
 				start_diagonals++;
 			}
 			countDiagonals = 0;
-			if (checkArray(array))
-				return true;
+			int wins = checkArray(array);
+			if (wins == 10) {
+				return 10;
+			}
+			else if (wins == -10) {
+				return -10;
+			}
 		}
 		rows--;
 		RightToLeft++;
 	}
 
-	return false;
+	return 1;
 }
 
 void LogicGame::logicControl(Matrix board, int& x, int& y, int& posX, int& posY, string playerCurrent) {
-	char key = '1';
+	char key = 1;
+	Console g1;
 	while (key != playerCurrent[0]) {
 		key = _getch();
 		switch (key) {
@@ -177,18 +209,33 @@ void LogicGame::logicControl(Matrix board, int& x, int& y, int& posX, int& posY,
 			break;
 
 		}
-		board.moveCursor(x, y);
+		g1.moveCursor(x, y);
 	}
 }
 
-void LogicGame::logicTurn(Matrix board, int posX, int posY, string playerCurrent) {
-	if (board.getValueSquare(posY, posX) == " ") {
+void LogicGame::logicTurn(Matrix board, int x, int y, string playerCurrent) {
+	if (board.getValueSquare(x, y) == " ") {
 		cout << playerCurrent;
-		board.setValueSquare(posY, posX, playerCurrent);
+		board.setValueSquare(x, y, playerCurrent);
 	}
 }
 
 void LogicGame::switchPlayer(string &playerCurrent) {
 	playerCurrent = (playerCurrent == "x") ? "o" : "x";
+}
+
+int LogicGame::moveLeft(Matrix board)
+{
+	int rows = board.getRows();
+	int cols = board.getCols();
+	int count = 0;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			if (board.getValueSquare(i, j) == " ") {
+				count++;
+			}
+		}
+	}
+	return count;
 }
 

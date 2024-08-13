@@ -1,19 +1,32 @@
+#ifndef GAME_H
+#define GAME_H
 
 #include <iostream>
 #include "map.h"
+#include "Square.h"
 #include "logicGame.h"
+#include "Graphics.h"
+#include "AIplayer.h"
 
+using namespace std;
 
 class Game
 {
 public:
 
-	void gameLoad();
+	void gameLoad(Matrix board);
 
-	void gameStart(Matrix matrix);
+	void gameStart(Matrix board);
 
-	bool gameWon(Matrix board, LogicGame g1);
+	void gamePlayerWithComputer(Matrix board);
+
+	int gameWon(Matrix board, LogicGame g1, int turn);
 
 private:
-	
+
 };
+
+#endif
+
+
+

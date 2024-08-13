@@ -1,17 +1,22 @@
-#pragma once
-#include <iostream>
-#include <Windows.h>
-#include "Square.h"
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
-class Graphics : public Square
+#include <iostream>
+#include <windows.h>
+
+using namespace std;
+
+class Console
 {
 public:
 	void gotoXY(int x, int y);
 
+	void moveCursor(int x, int y);
+
 	void drawBoard(int rows, int cols);
 
 private:
-	Square **graphicsCell;
+
 };
 
-
+#endif // GRAPHICS_H

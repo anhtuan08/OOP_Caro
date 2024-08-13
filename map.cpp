@@ -83,9 +83,4 @@ void Matrix::setValueBoard(int rows, int cols) {
 		return this->cols;
 	}
 
-void Matrix::moveCursor(int x, int y) {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD pos = { x, y };
-	SetConsoleCursorPosition(hConsole, pos);
-}
 
