@@ -52,7 +52,7 @@ void AIplayer::bestMove(Matrix board)
 			}
 		}
 	board.setValueSquare(pointX, pointY, aiPlayer);
-	showAIMove(pointY, pointX, g1);
+	showAIMove(pointX, pointY, g1);
 }
 
 int AIplayer::miniMax(Matrix board, int dept, bool isMinimaxing)
@@ -62,16 +62,12 @@ int AIplayer::miniMax(Matrix board, int dept, bool isMinimaxing)
 
 	Game game1;
 	LogicGame logic1;
-	int turn = 0;
+	int turn = logic1.moveLeft(board);
 	int res = game1.gameWon(board, logic1, turn);
-	if (res == 10) {
-		return res - dept;
-	}
-	else if (res == -10) {
-		return res + dept;
+	if (res == 10 || res == -10 || res == 0) {
+		return res;
 	}
 	else {
-
 		if (isMinimaxing) {
 			int bestScore = -10000;
 			for (int i = 0; i < rows; i++) {

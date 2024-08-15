@@ -4,7 +4,7 @@
 #include  "map.h"
 #include "Graphics.h"
 
-const int numberWins = 3;
+const int numberWins = 5;
 
 class LogicGame
 {

@@ -8,7 +8,7 @@ int main()
     Game caro;
     
 
-    Matrix a(3,3);
+    Matrix a(5,5);
 
     caro.gameLoad(a);            
  

@@ -39,19 +39,17 @@ int Game::gameWon(Matrix board, LogicGame game, int turn) {
 	flag[6] = game.checkDiagonalRightBottom(board, rows, cols);
 	
 
-	if (turn != 0) {
 		for (int i = 0; i < 7; i++) {
 			if (flag[i] == 10 || flag[i] == -10) {
 				return flag[i];
 			}
 		}
-		return 1;
-	}
-	else if (turn == 0) {
+		if (turn == 0) {
 			return 0;
 		}
-
+		return 1;
 	}
+	
 
 void Game::gameStart(Matrix board)
 {
@@ -114,8 +112,8 @@ void Game::gamePlayerWithComputer(Matrix board) {
 			logicGame1.logicControl(board, x, y, posX, posY, humanPlayer);
 			logicGame1.logicTurn(board, posY, posX, humanPlayer);
 			if (game1.gameWon(board, logicGame1, turn) == 1) {
-				/*computerPlayer.bestMove(board);*/
-				computerPlayer.checkAvailable(rows, cols, board, g1);
+				computerPlayer.bestMove(board);
+				//computerPlayer.checkAvailable(rows, cols, board, g1);
 				}
 			}
 		}

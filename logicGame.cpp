@@ -7,14 +7,14 @@ LogicGame::LogicGame() {
 int checkArray(string array[numberWins]) {
 	int score = 0;
 	if (array[0] == "x"){
-		//if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
-			if(array[0] == array[1] && array[1] == array[2]){
+		if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
+			//if(array[0] == array[1] && array[1] == array[2]){
 			return score + 10;
 		}
 	}
 	else if(array[0] == "o") {
-		//if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
-		if (array[0] == array[1] && array[1] == array[2]) {
+		if (array[0] == array[1] && array[1] == array[2] && array[2] == array[3] && array[3] == array[4]) {
+		//if (array[0] == array[1] && array[1] == array[2]) {
 		return score - 10;
 		}
 	}
